@@ -2,8 +2,17 @@ function parseJwt (token) {
     return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
 }
 
+function getTokenFromRequest(req){
+    if(req.header('x-jwt-assertion')){
+        return req.header('x-jwt-assertion');
+    }else if(typeof req.header('Authorization') === 'string'){
+        return req.header('Authorization').split(" ")[1];
+    }
+    return null;
+}
+
 const tokenValidater = function (req, res, next) {
-    const token = req.header('x-jwt-assertion');
+    const token = getTokenFromRequest(req);
     if (!token) return res.status(401).json({ error: 'Access denied' });
     try {
         const decoded = parseJwt(token);

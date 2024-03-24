@@ -1,8 +1,10 @@
 const mongoose = require("mongoose")
 
 const viewSchema = mongoose.Schema({
-	view_id: Number,
+	view_id: String,
 	owner_id: String,
+	view_name: String,
+	view_description: String,
 	stocks: [String],
 	result: [{
         symbol:String,
@@ -10,7 +12,9 @@ const viewSchema = mongoose.Schema({
         price:Number,
         day1change:String,
         day7change:String
-    }]
+    }],
+    performance: String,
+    lastUpdate: String
 });
 
 module.exports = mongoose.model("View", viewSchema)
