@@ -6,4 +6,8 @@ router.post('/getAll', [
 	ViewController.getViews
 ]);
 
+router.post('/createView', [
+	ViewController.createView
+]);
+
 module.exports = router

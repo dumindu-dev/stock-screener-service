@@ -8,13 +8,13 @@ const viewSchema = mongoose.Schema({
 	stocks: [String],
 	result: [{
         symbol:String,
-        company:String,
-        price:Number,
-        day1change:String,
-        day7change:String
+        longName:String,
+        currentPrice:Number,
+        previousClose:Number,
+        change:Number,
+        "52WeekChange":Number
     }],
-    performance: String,
-    lastUpdate: String
+    performance: String
 });
 
 module.exports = mongoose.model("View", viewSchema)

@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 const Database = require("./utils/Database")
 const ApiRouter = require("./routes/routes.config")
@@ -8,6 +9,7 @@ const ApiRouter = require("./routes/routes.config")
 const app = express();
 
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 
 const allowedOrigins = ['http://localhost:3000', 'http://localhost:8080'];
 app.use(cors({
