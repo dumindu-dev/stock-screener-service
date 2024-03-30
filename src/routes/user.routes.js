@@ -10,4 +10,12 @@ router.post('/updateDividendAlertSetting', [
 	UserController.updateDividendAlertSetting
 ]);
 
+router.post('/getTelegramToken', [
+	UserController.getTelegramToken
+]);
+
+router.post('/disconnectTelegram', [
+	UserController.disconnectTelegram
+]);
+
 module.exports = router

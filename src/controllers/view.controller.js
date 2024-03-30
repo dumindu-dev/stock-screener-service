@@ -50,3 +50,31 @@ exports.createView = async (req, res) => {
 	await creatingView.save();
 	res.send({success:1,description:"New view is created successfully."});
 };
+
+exports.getSingleView = async (req, res) => {
+	console.log(req.body.view_id);
+	const currentView = await View.findOne({owner_id:req.auth.userId,view_id:req.body.view_id}, "-_id view_id view_name view_description stocks result performance");
+	res.send(currentView);
+};
+
+exports.updateView = async (req, res) => {
+
+	let latestView = {
+		view_name:req.body.name,
+		view_description:req.body.description,
+		stocks:req.body.stocks
+	};
+	latestView.result = await calculateResults(req.body.stocks);
+	latestView.performance = String(await calculatePerfomance(latestView.result))+"%";
+
+	await View.updateOne({owner_id:req.auth.userId,view_id:req.body.view_id},latestView);
+
+	res.send({success:1,description:"View is updated successfully."});
+};
+
+exports.deleteView = async (req, res) => {
+
+	await View.deleteOne({owner_id:req.auth.userId,view_id:req.body.view_id});
+
+	res.send({success:1,description:"View is deleted successfully."});
+};

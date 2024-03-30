@@ -26,3 +26,13 @@ exports.updateDividendAlertSetting = async (req, res) => {
 
 	res.send({success:1,description:"Setting updated successfully."});
 };
+
+exports.getTelegramToken = async (req, res) => {
+	const telegramToken = await User.findOne({userId:req.auth.userId}, "-_id telegramToken");
+	res.send(telegramToken);
+};
+
+exports.disconnectTelegram = async (req, res) => {
+	await User.updateOne({userId:req.auth.userId}, {"$set":{"telegramChatId":""}});
+	res.send({success:1,description:"Telegram account is disconnected successfully."});
+};
