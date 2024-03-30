@@ -5,7 +5,8 @@ const userSchema = mongoose.Schema({
 	name: { type: String, required: true },
 	email: { type: String, required: true },
 	telegramToken: { type: String, required: true },
-	telegramChatId:{ type: String, required: false }
+	telegramChatId:{ type: String, required: false },
+	settings:{telegram_dividends:Number}
 });
 
 module.exports = mongoose.model("User", userSchema)
