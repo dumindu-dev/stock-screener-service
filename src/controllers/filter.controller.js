@@ -64,3 +64,36 @@ exports.saveFilter = async (req, res) => {
 
 	res.send({success:1,description:"Filter created successfully."});
 };
+
+exports.getAll = async (req, res) => {
+	const filters = await Filter.find({owner_id:req.auth.userId},"-_id filter_id filter_name filter_description conditions");
+
+	res.send(filters);
+};
+
+exports.getFilter = async (req, res) => {
+	const filter = await Filter.findOne({owner_id:req.auth.userId, filter_id:req.body.filter},"-_id filter_name filter_description conditions");
+
+	res.send(filter);
+};
+
+exports.updateFilter = async (req, res) => {
+	const stocks = await filterStocksByParams(req.body.filters);
+
+	let latestFilter = {
+		filter_name:req.body.name,
+		filter_description:req.body.description,
+		conditions:req.body.filters,
+		result:stocks.result
+	};
+
+	await Filter.updateOne({filter_id:req.body.filterId,owner_id:req.auth.userId},latestFilter);
+
+	res.send({success:1,description:"Filter updated successfully."});
+};
+
+exports.deleteFilter = async (req, res) => {
+	await Filter.deleteOne({filter_id:req.body.filter_id,owner_id:req.auth.userId});
+
+	res.send({success:1,description:"Filter deleted successfully."});
+};
