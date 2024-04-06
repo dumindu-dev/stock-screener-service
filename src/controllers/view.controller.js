@@ -78,3 +78,21 @@ exports.deleteView = async (req, res) => {
 
 	res.send({success:1,description:"View is deleted successfully."});
 };
+
+exports.bestPerformingView = async (req, res) => {
+	const views = await View.find({owner_id:req.auth.userId}, "-_id view_id view_name performance");
+
+	if(views.length > 0){
+		let returnView =[views[0]];
+
+		views.forEach(view =>{
+			if(Number(view.performance.replace("%","")) > Number(returnView[0].performance.replace("%",""))){
+				returnView[0]= view;
+			}
+		});
+
+		res.send(returnView);
+	}else{
+		res.send([]);
+	}
+};

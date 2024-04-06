@@ -22,4 +22,8 @@ router.post('/deleteView', [
 	ViewController.deleteView
 ]);
 
+router.post('/bestPerformingView', [
+	ViewController.bestPerformingView
+]);
+
 module.exports = router

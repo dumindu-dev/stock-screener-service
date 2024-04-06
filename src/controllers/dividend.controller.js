@@ -1,6 +1,6 @@
 const Dividend = require("../models/dividend.model");
 
-exports.getNextWeekDividends = async (req, res) => {
+async function getUpcomingDividendList(){
 	const dividendList = await Dividend.find({date:{"$gt":Math.floor(Date.now() / 1000)}}, "-_id date dividends").sort("date 1");
 	
 	let returnList = [];
@@ -14,10 +14,32 @@ exports.getNextWeekDividends = async (req, res) => {
 				company:value.company,
 				amount:value.amount,
 				currentPrice:value.currentPrice,
-				dividendYield:String(value.yield *100)+"%"
+				dividendYield:String(value.yield *100)+"%",
+				rawYield: value.yield
 			});
 		});
 	});
+	return returnList;
+}
 
+exports.getNextWeekDividends = async (req, res) => {
+	let returnList = await getUpcomingDividendList();
 	res.send(returnList);
+};
+
+exports.getHighestDividendYield = async (req, res) => {
+	let returnList = await getUpcomingDividendList();
+	
+	if(returnList.length > 0){
+		let responseArr = [returnList[0]];
+		returnList.forEach(function(dv){
+			if(dv.rawYield && !responseArr[0].rawYield) responseArr[0]=dv;
+			if(dv.rawYield && responseArr[0].rawYield < dv.rawYield){
+				responseArr[0]=dv;
+			}
+		});
+		res.send(responseArr);
+	}else{
+		res.send([]);
+	}
 };

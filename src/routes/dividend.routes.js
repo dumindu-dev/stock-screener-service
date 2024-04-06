@@ -6,4 +6,8 @@ router.post('/getNextWeekDividends', [
 	DividendController.getNextWeekDividends
 ]);
 
+router.post('/getHighestDividendYield', [
+	DividendController.getHighestDividendYield
+]);
+
 module.exports = router
