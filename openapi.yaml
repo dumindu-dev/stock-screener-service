@@ -1,0 +1,360 @@
+openapi: 3.0.3
+info:
+  title: Market Sentry API
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: http://localhost:3000/api
+paths:
+  /views/getAll:
+    post:
+      tags:
+        - Views
+      summary: Get all views
+      description: Get all views
+      operationId: getAllViews
+      parameters:
+        - name: x-jwt-assertion
+          in: header
+          schema:
+            type: string
+            example: '{{JWT}}'
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get all views:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /views/getSingleView:
+    post:
+      tags:
+        - Views
+      summary: Get single view
+      description: Get single view
+      operationId: getSingleView
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get single view:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /views/createView:
+    post:
+      tags:
+        - Views
+      summary: Create a view
+      description: Create a view
+      operationId: createAView
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Create a view:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /views/updateView:
+    post:
+      tags:
+        - Views
+      summary: Update view
+      description: Update view
+      operationId: updateView
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Update view:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /views/deleteView:
+    post:
+      tags:
+        - Views
+      summary: Delete view
+      description: Delete view
+      operationId: deleteView
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Delete view:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /views/bestPerformingView:
+    post:
+      tags:
+        - Views
+      summary: Get best performing view
+      description: Get best performing view
+      operationId: getBestPerformingView
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get best performing view:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /auth/authenticate:
+    post:
+      tags:
+        - Authentication
+      summary: Authenticate
+      description: Authenticate
+      operationId: authenticate
+      responses:
+        '200':
+          description: ''
+  /dividends/getNextWeekDividends:
+    post:
+      tags:
+        - Dividends
+      summary: Get next week dividends
+      description: Get next week dividends
+      operationId: getNextWeekDividends
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get next week dividends:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /dividends/getHighestDividendYield:
+    post:
+      tags:
+        - Dividends
+      summary: Get highest dividends yield
+      description: Get highest dividends yield
+      operationId: getHighestDividendsYield
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get highest dividends yield:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /economicEvents/getMarketEvents:
+    post:
+      tags:
+        - Economic calendar
+      summary: Get upcoming market events
+      description: Get upcoming market events
+      operationId: getUpcomingMarketEvents
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get upcoming market events:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /filters/filterStocks:
+    post:
+      tags:
+        - Filters
+      summary: Filter requests
+      description: Filter requests
+      operationId: filterRequests
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Filter requests:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /filters/saveFilter:
+    post:
+      tags:
+        - Filters
+      summary: Save filter
+      description: Save filter
+      operationId: saveFilter
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Save filter:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /filters/getAll:
+    post:
+      tags:
+        - Filters
+      summary: Get all filters
+      description: Get all filters
+      operationId: getAllFilters
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get all filters:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /filters/getFilter:
+    post:
+      tags:
+        - Filters
+      summary: Get a single filter
+      description: Get a single filter
+      operationId: getASingleFilter
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get a single filter:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /filters/updateFilter:
+    post:
+      tags:
+        - Filters
+      summary: Update filter
+      description: Update filter
+      operationId: updateFilter
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Update filter:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /filters/deleteFilter:
+    post:
+      tags:
+        - Filters
+      summary: Delete filter
+      description: Delete filter
+      operationId: deleteFilter
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Delete filter:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /stock/searchByCompanyName:
+    post:
+      tags:
+        - Stocks
+      summary: Search by company name
+      description: Search by company name
+      operationId: searchByCompanyName
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Search by company name:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /users/getUserSettings:
+    post:
+      tags:
+        - Users
+      summary: Get user settings
+      description: Get user settings
+      operationId: getUserSettings
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get user settings:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /users/updateDividendAlertSetting:
+    post:
+      tags:
+        - Users
+      summary: Update dividend alert setting
+      description: Update dividend alert setting
+      operationId: updateDividendAlertSetting
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Update dividend alert setting:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /users/getTelegramToken:
+    post:
+      tags:
+        - Users
+      summary: Get telegram token
+      description: Get telegram token
+      operationId: getTelegramToken
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get telegram token:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /users/disconnectTelegram:
+    post:
+      tags:
+        - Users
+      summary: Disconnect telegram
+      description: Disconnect telegram
+      operationId: disconnectTelegram
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Disconnect telegram:
+                value: ''
+      responses:
+        '200':
+          description: ''
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+tags:
+  - name: Views
+  - name: Authentication
+  - name: Dividends
+  - name: Economic calendar
+  - name: Filters
+  - name: Portal information
+  - name: Stocks
+  - name: Users
