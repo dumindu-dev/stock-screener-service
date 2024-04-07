@@ -110,7 +110,7 @@ paths:
         '200':
           description: ''
   /api/auth/authenticate:
-    get:
+    post:
       tags:
         - Authentication
       summary: Authenticate
