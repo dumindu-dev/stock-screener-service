@@ -11,7 +11,7 @@ const app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:8080'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:8080','https://console.choreo.dev'];
 app.use(cors({
     credentials:true,
     origin: function(origin, callback){
