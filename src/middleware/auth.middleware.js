@@ -13,7 +13,7 @@ function getTokenFromRequest(req){
 
 const tokenValidater = function (req, res, next) {
     const token = getTokenFromRequest(req);
-    if (!token) return res.status(401).json({ error: 'Access denied' });
+    if (!token) return res.status(401).json({ error: 'Access denied', headers: JSON.stringify(req.headers, null, 2) });
     try {
         const decoded = parseJwt(token);
 
