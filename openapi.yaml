@@ -4,9 +4,10 @@ info:
   version: 1.0.0
   contact: {}
 servers:
-  - url: http://localhost:3000/api
+  - url: >-
+      https://630492b9-7431-4e07-99b0-807e4f6ce0e9-dev.e1-us-east-azure.choreoapis.dev/tsar/market-sentry-backend/market-sentry-api-197/v1.0
 paths:
-  /views/getAll:
+  /api/views/getAll:
     post:
       tags:
         - Views
@@ -28,7 +29,7 @@ paths:
       responses:
         '200':
           description: ''
-  /views/getSingleView:
+  /api/views/getSingleView:
     post:
       tags:
         - Views
@@ -44,7 +45,7 @@ paths:
       responses:
         '200':
           description: ''
-  /views/createView:
+  /api/views/createView:
     post:
       tags:
         - Views
@@ -60,7 +61,7 @@ paths:
       responses:
         '200':
           description: ''
-  /views/updateView:
+  /api/views/updateView:
     post:
       tags:
         - Views
@@ -76,7 +77,7 @@ paths:
       responses:
         '200':
           description: ''
-  /views/deleteView:
+  /api/views/deleteView:
     post:
       tags:
         - Views
@@ -92,7 +93,7 @@ paths:
       responses:
         '200':
           description: ''
-  /views/bestPerformingView:
+  /api/views/bestPerformingView:
     post:
       tags:
         - Views
@@ -108,7 +109,7 @@ paths:
       responses:
         '200':
           description: ''
-  /auth/authenticate:
+  /api/auth/authenticate:
     post:
       tags:
         - Authentication
@@ -118,13 +119,26 @@ paths:
       responses:
         '200':
           description: ''
-  /dividends/getNextWeekDividends:
+  /api/dividends/getNextWeekDividends:
     post:
       tags:
         - Dividends
       summary: Get next week dividends
       description: Get next week dividends
       operationId: getNextWeekDividends
+      parameters:
+        - name: x-jwt-assertion
+          in: header
+          schema:
+            type: string
+            example: >-
+              eyJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJkNDM0MmNlYi01ZjY4LTQ2OTItOGY1OS0wZThlNzkzY2M3MjRAY2FyYm9uLnN1cGVyIiwiYXVkIjoiY2hvcmVvOmRlcGxveW1lbnQ6c2FuZGJveCIsImlzcyI6Imh0dHBzOlwvXC9zdHMuY2hvcmVvLmRldjo0NDNcL2FwaVwvYW1cL3B1Ymxpc2hlclwvdjJcL2FwaXNcL2ludGVybmFsLWtleSIsImtleXR5cGUiOiJTQU5EQk9YIiwic3Vic2NyaWJlZEFQSXMiOlt7InN1YnNjcmliZXJUZW5hbnREb21haW4iOm51bGwsIm5hbWUiOiJNYXJrZXQgc2VudHJ5IGJhY2tlbmQgLSBNYXJrZXQgc2VudHJ5IEFQSSIsImNvbnRleHQiOiJcLzYzMDQ5MmI5LTc0MzEtNGUwNy05OWIwLTgwN2U0ZjZjZTBlOVwvdHNhclwvbWFya2V0LXNlbnRyeS1iYWNrZW5kXC9tYXJrZXQtc2VudHJ5LWFwaS0xOTdcL3YxLjAiLCJwdWJsaXNoZXIiOiJjaG9yZW9fcHJvZF9hcGltX2FkbWluIiwidmVyc2lvbiI6InYxLjAiLCJzdWJzY3JpcHRpb25UaWVyIjpudWxsfV0sImV4cCI6MTcxMjQ2OTEwMCwidG9rZW5fdHlwZSI6IkludGVybmFsS2V5IiwiaWF0IjoxNzEyNDY4NTAwLCJqdGkiOiIxZDhiMTE5MC02YjAyLTRlMjgtOTkxOS01OGEwYmExNzU4NGMifQ.S4tIfVIIZCCJjPVMaW4er0k5uh-M8C-ymPviIpq_4Ks-uyC1mMuOz1CYhlvPLizWEvW1rAe8Qyu1YQXZc36gEjNPq0w2LFddOayJpRuJisePanMiesXP_OUJKKHm32NsxOp5HnMhuAHxhpE0piBlR8RQiEmP0wD0z69_6CvHoYP-pMfyTOH4riJm8kAU1aApiYRSdve4foZGPy2b4btwpeqq3dLoaXUILaQnWWaKkpRYISfycTAHQ8dtISDnDiDQFf6DJ3mYfSCIqvStFswx46BIVfX39bQAQnO3PJZBPL265td2K7l20bgF4oAwAg7YDPTWnRcAFefwyU3n8wt3PtNte-cHknoD7gEbZw_5LVNNp9T7uG6XlGokPqnkCBcs910OmMIUqhcaNfWgsLgPdr4YAcDyBUJ5N6LnA5KiqvM6IWlJLg-a-m6GvUobmv5rt18MSKX7YV-4uESLB1Bzo_8R3C2mWeMrzAfTsedjcZPaXqYoc8gBZyGBLNVqjyIsWDdCdJIV6z8IZWq7nGH7SEviAObuJOtEBH0slhSgYXtaRJj5LcrjVHHCozpKWdv3JwSuPesOM4qdvS6YKWGsPrZC_YTxUU_K52WNSBStg7kq1V7rmAaIwyTBSzD31p2njWdpabLJfejMyxFZA0gPSQ5sJby_in3_7RaBauGXMmc
+        - name: bearer
+          in: header
+          schema:
+            type: string
+            example: >-
+              eyJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJkNDM0MmNlYi01ZjY4LTQ2OTItOGY1OS0wZThlNzkzY2M3MjRAY2FyYm9uLnN1cGVyIiwiYXVkIjoiY2hvcmVvOmRlcGxveW1lbnQ6c2FuZGJveCIsImlzcyI6Imh0dHBzOlwvXC9zdHMuY2hvcmVvLmRldjo0NDNcL2FwaVwvYW1cL3B1Ymxpc2hlclwvdjJcL2FwaXNcL2ludGVybmFsLWtleSIsImtleXR5cGUiOiJTQU5EQk9YIiwic3Vic2NyaWJlZEFQSXMiOlt7InN1YnNjcmliZXJUZW5hbnREb21haW4iOm51bGwsIm5hbWUiOiJNYXJrZXQgc2VudHJ5IGJhY2tlbmQgLSBNYXJrZXQgc2VudHJ5IEFQSSIsImNvbnRleHQiOiJcLzYzMDQ5MmI5LTc0MzEtNGUwNy05OWIwLTgwN2U0ZjZjZTBlOVwvdHNhclwvbWFya2V0LXNlbnRyeS1iYWNrZW5kXC9tYXJrZXQtc2VudHJ5LWFwaS0xOTdcL3YxLjAiLCJwdWJsaXNoZXIiOiJjaG9yZW9fcHJvZF9hcGltX2FkbWluIiwidmVyc2lvbiI6InYxLjAiLCJzdWJzY3JpcHRpb25UaWVyIjpudWxsfV0sImV4cCI6MTcxMjQ2OTEwMCwidG9rZW5fdHlwZSI6IkludGVybmFsS2V5IiwiaWF0IjoxNzEyNDY4NTAwLCJqdGkiOiIxZDhiMTE5MC02YjAyLTRlMjgtOTkxOS01OGEwYmExNzU4NGMifQ.S4tIfVIIZCCJjPVMaW4er0k5uh-M8C-ymPviIpq_4Ks-uyC1mMuOz1CYhlvPLizWEvW1rAe8Qyu1YQXZc36gEjNPq0w2LFddOayJpRuJisePanMiesXP_OUJKKHm32NsxOp5HnMhuAHxhpE0piBlR8RQiEmP0wD0z69_6CvHoYP-pMfyTOH4riJm8kAU1aApiYRSdve4foZGPy2b4btwpeqq3dLoaXUILaQnWWaKkpRYISfycTAHQ8dtISDnDiDQFf6DJ3mYfSCIqvStFswx46BIVfX39bQAQnO3PJZBPL265td2K7l20bgF4oAwAg7YDPTWnRcAFefwyU3n8wt3PtNte-cHknoD7gEbZw_5LVNNp9T7uG6XlGokPqnkCBcs910OmMIUqhcaNfWgsLgPdr4YAcDyBUJ5N6LnA5KiqvM6IWlJLg-a-m6GvUobmv5rt18MSKX7YV-4uESLB1Bzo_8R3C2mWeMrzAfTsedjcZPaXqYoc8gBZyGBLNVqjyIsWDdCdJIV6z8IZWq7nGH7SEviAObuJOtEBH0slhSgYXtaRJj5LcrjVHHCozpKWdv3JwSuPesOM4qdvS6YKWGsPrZC_YTxUU_K52WNSBStg7kq1V7rmAaIwyTBSzD31p2njWdpabLJfejMyxFZA0gPSQ5sJby_in3_7RaBauGXMmc
       requestBody:
         content:
           application/json:
@@ -134,7 +148,7 @@ paths:
       responses:
         '200':
           description: ''
-  /dividends/getHighestDividendYield:
+  /api/dividends/getHighestDividendYield:
     post:
       tags:
         - Dividends
@@ -150,7 +164,7 @@ paths:
       responses:
         '200':
           description: ''
-  /economicEvents/getMarketEvents:
+  /api/economicEvents/getMarketEvents:
     post:
       tags:
         - Economic calendar
@@ -166,7 +180,7 @@ paths:
       responses:
         '200':
           description: ''
-  /filters/filterStocks:
+  /api/filters/filterStocks:
     post:
       tags:
         - Filters
@@ -182,7 +196,7 @@ paths:
       responses:
         '200':
           description: ''
-  /filters/saveFilter:
+  /api/filters/saveFilter:
     post:
       tags:
         - Filters
@@ -198,7 +212,7 @@ paths:
       responses:
         '200':
           description: ''
-  /filters/getAll:
+  /api/filters/getAll:
     post:
       tags:
         - Filters
@@ -214,7 +228,7 @@ paths:
       responses:
         '200':
           description: ''
-  /filters/getFilter:
+  /api/filters/getFilter:
     post:
       tags:
         - Filters
@@ -230,7 +244,7 @@ paths:
       responses:
         '200':
           description: ''
-  /filters/updateFilter:
+  /api/filters/updateFilter:
     post:
       tags:
         - Filters
@@ -246,7 +260,7 @@ paths:
       responses:
         '200':
           description: ''
-  /filters/deleteFilter:
+  /api/filters/deleteFilter:
     post:
       tags:
         - Filters
@@ -262,7 +276,23 @@ paths:
       responses:
         '200':
           description: ''
-  /stock/searchByCompanyName:
+  /api/site/getLastPriceUpdateTime:
+    post:
+      tags:
+        - Portal information
+      summary: Get last price update time
+      description: Get last price update time
+      operationId: getLastPriceUpdateTime
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get last price update time:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /api/stock/searchByCompanyName:
     post:
       tags:
         - Stocks
@@ -278,7 +308,7 @@ paths:
       responses:
         '200':
           description: ''
-  /users/getUserSettings:
+  /api/users/getUserSettings:
     post:
       tags:
         - Users
@@ -294,7 +324,7 @@ paths:
       responses:
         '200':
           description: ''
-  /users/updateDividendAlertSetting:
+  /api/users/updateDividendAlertSetting:
     post:
       tags:
         - Users
@@ -310,7 +340,7 @@ paths:
       responses:
         '200':
           description: ''
-  /users/getTelegramToken:
+  /api/users/getTelegramToken:
     post:
       tags:
         - Users
@@ -326,7 +356,7 @@ paths:
       responses:
         '200':
           description: ''
-  /users/disconnectTelegram:
+  /api/users/disconnectTelegram:
     post:
       tags:
         - Users
