@@ -161,6 +161,43 @@ paths:
       responses:
         '200':
           description: ''
+  /api/dividends/sendDividendTelegramUpdates:
+    post:
+      tags:
+        - Dividends
+      summary: Send telegram dividend alerts
+      description: Send telegram dividend alerts
+      operationId: sendTelegramDividendAlerts
+      parameters:
+        - name: x-jwt-assertion
+          in: header
+          schema:
+            type: string
+            example: >-
+              eyJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJkNDM0MmNlYi01ZjY4LTQ2OTItOGY1OS0wZThlNzkzY2M3MjRAY2FyYm9uLnN1cGVyIiwiYXVkIjoiY2hvcmVvOmRlcGxveW1lbnQ6c2FuZGJveCIsImlzcyI6Imh0dHBzOlwvXC9zdHMuY2hvcmVvLmRldjo0NDNcL2FwaVwvYW1cL3B1Ymxpc2hlclwvdjJcL2FwaXNcL2ludGVybmFsLWtleSIsImtleXR5cGUiOiJTQU5EQk9YIiwic3Vic2NyaWJlZEFQSXMiOlt7InN1YnNjcmliZXJUZW5hbnREb21haW4iOm51bGwsIm5hbWUiOiJNYXJrZXQgc2VudHJ5IGJhY2tlbmQgLSBNYXJrZXQgc2VudHJ5IEFQSSIsImNvbnRleHQiOiJcLzYzMDQ5MmI5LTc0MzEtNGUwNy05OWIwLTgwN2U0ZjZjZTBlOVwvdHNhclwvbWFya2V0LXNlbnRyeS1iYWNrZW5kXC9tYXJrZXQtc2VudHJ5LWFwaS0xOTdcL3YxLjAiLCJwdWJsaXNoZXIiOiJjaG9yZW9fcHJvZF9hcGltX2FkbWluIiwidmVyc2lvbiI6InYxLjAiLCJzdWJzY3JpcHRpb25UaWVyIjpudWxsfV0sImV4cCI6MTcxMjQ2OTEwMCwidG9rZW5fdHlwZSI6IkludGVybmFsS2V5IiwiaWF0IjoxNzEyNDY4NTAwLCJqdGkiOiIxZDhiMTE5MC02YjAyLTRlMjgtOTkxOS01OGEwYmExNzU4NGMifQ.S4tIfVIIZCCJjPVMaW4er0k5uh-M8C-ymPviIpq_4Ks-uyC1mMuOz1CYhlvPLizWEvW1rAe8Qyu1YQXZc36gEjNPq0w2LFddOayJpRuJisePanMiesXP_OUJKKHm32NsxOp5HnMhuAHxhpE0piBlR8RQiEmP0wD0z69_6CvHoYP-pMfyTOH4riJm8kAU1aApiYRSdve4foZGPy2b4btwpeqq3dLoaXUILaQnWWaKkpRYISfycTAHQ8dtISDnDiDQFf6DJ3mYfSCIqvStFswx46BIVfX39bQAQnO3PJZBPL265td2K7l20bgF4oAwAg7YDPTWnRcAFefwyU3n8wt3PtNte-cHknoD7gEbZw_5LVNNp9T7uG6XlGokPqnkCBcs910OmMIUqhcaNfWgsLgPdr4YAcDyBUJ5N6LnA5KiqvM6IWlJLg-a-m6GvUobmv5rt18MSKX7YV-4uESLB1Bzo_8R3C2mWeMrzAfTsedjcZPaXqYoc8gBZyGBLNVqjyIsWDdCdJIV6z8IZWq7nGH7SEviAObuJOtEBH0slhSgYXtaRJj5LcrjVHHCozpKWdv3JwSuPesOM4qdvS6YKWGsPrZC_YTxUU_K52WNSBStg7kq1V7rmAaIwyTBSzD31p2njWdpabLJfejMyxFZA0gPSQ5sJby_in3_7RaBauGXMmc
+        - name: bearer
+          in: header
+          schema:
+            type: string
+            example: >-
+              eyJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJkNDM0MmNlYi01ZjY4LTQ2OTItOGY1OS0wZThlNzkzY2M3MjRAY2FyYm9uLnN1cGVyIiwiYXVkIjoiY2hvcmVvOmRlcGxveW1lbnQ6c2FuZGJveCIsImlzcyI6Imh0dHBzOlwvXC9zdHMuY2hvcmVvLmRldjo0NDNcL2FwaVwvYW1cL3B1Ymxpc2hlclwvdjJcL2FwaXNcL2ludGVybmFsLWtleSIsImtleXR5cGUiOiJTQU5EQk9YIiwic3Vic2NyaWJlZEFQSXMiOlt7InN1YnNjcmliZXJUZW5hbnREb21haW4iOm51bGwsIm5hbWUiOiJNYXJrZXQgc2VudHJ5IGJhY2tlbmQgLSBNYXJrZXQgc2VudHJ5IEFQSSIsImNvbnRleHQiOiJcLzYzMDQ5MmI5LTc0MzEtNGUwNy05OWIwLTgwN2U0ZjZjZTBlOVwvdHNhclwvbWFya2V0LXNlbnRyeS1iYWNrZW5kXC9tYXJrZXQtc2VudHJ5LWFwaS0xOTdcL3YxLjAiLCJwdWJsaXNoZXIiOiJjaG9yZW9fcHJvZF9hcGltX2FkbWluIiwidmVyc2lvbiI6InYxLjAiLCJzdWJzY3JpcHRpb25UaWVyIjpudWxsfV0sImV4cCI6MTcxMjQ2OTEwMCwidG9rZW5fdHlwZSI6IkludGVybmFsS2V5IiwiaWF0IjoxNzEyNDY4NTAwLCJqdGkiOiIxZDhiMTE5MC02YjAyLTRlMjgtOTkxOS01OGEwYmExNzU4NGMifQ.S4tIfVIIZCCJjPVMaW4er0k5uh-M8C-ymPviIpq_4Ks-uyC1mMuOz1CYhlvPLizWEvW1rAe8Qyu1YQXZc36gEjNPq0w2LFddOayJpRuJisePanMiesXP_OUJKKHm32NsxOp5HnMhuAHxhpE0piBlR8RQiEmP0wD0z69_6CvHoYP-pMfyTOH4riJm8kAU1aApiYRSdve4foZGPy2b4btwpeqq3dLoaXUILaQnWWaKkpRYISfycTAHQ8dtISDnDiDQFf6DJ3mYfSCIqvStFswx46BIVfX39bQAQnO3PJZBPL265td2K7l20bgF4oAwAg7YDPTWnRcAFefwyU3n8wt3PtNte-cHknoD7gEbZw_5LVNNp9T7uG6XlGokPqnkCBcs910OmMIUqhcaNfWgsLgPdr4YAcDyBUJ5N6LnA5KiqvM6IWlJLg-a-m6GvUobmv5rt18MSKX7YV-4uESLB1Bzo_8R3C2mWeMrzAfTsedjcZPaXqYoc8gBZyGBLNVqjyIsWDdCdJIV6z8IZWq7nGH7SEviAObuJOtEBH0slhSgYXtaRJj5LcrjVHHCozpKWdv3JwSuPesOM4qdvS6YKWGsPrZC_YTxUU_K52WNSBStg7kq1V7rmAaIwyTBSzD31p2njWdpabLJfejMyxFZA0gPSQ5sJby_in3_7RaBauGXMmc
+        - name: api-key
+          in: header
+          schema:
+            type: string
+            example: >-
+              eyJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJkNDM0MmNlYi01ZjY4LTQ2OTItOGY1OS0wZThlNzkzY2M3MjRAY2FyYm9uLnN1cGVyIiwiYXVkIjoiY2hvcmVvOmRlcGxveW1lbnQ6c2FuZGJveCIsImlzcyI6Imh0dHBzOlwvXC9zdHMuY2hvcmVvLmRldjo0NDNcL2FwaVwvYW1cL3B1Ymxpc2hlclwvdjJcL2FwaXNcL2ludGVybmFsLWtleSIsImtleXR5cGUiOiJTQU5EQk9YIiwic3Vic2NyaWJlZEFQSXMiOlt7InN1YnNjcmliZXJUZW5hbnREb21haW4iOm51bGwsIm5hbWUiOiJNYXJrZXQgc2VudHJ5IGJhY2tlbmQgLSBNYXJrZXQgc2VudHJ5IEFQSSIsImNvbnRleHQiOiJcLzYzMDQ5MmI5LTc0MzEtNGUwNy05OWIwLTgwN2U0ZjZjZTBlOVwvdHNhclwvbWFya2V0LXNlbnRyeS1iYWNrZW5kXC9tYXJrZXQtc2VudHJ5LWFwaS0xOTdcL3YxLjAiLCJwdWJsaXNoZXIiOiJjaG9yZW9fcHJvZF9hcGltX2FkbWluIiwidmVyc2lvbiI6InYxLjAiLCJzdWJzY3JpcHRpb25UaWVyIjpudWxsfV0sImV4cCI6MTcxMjQ3MjkwOCwidG9rZW5fdHlwZSI6IkludGVybmFsS2V5IiwiaWF0IjoxNzEyNDcyMzA4LCJqdGkiOiI0Y2IxMjA0Yy1jM2RlLTRhMGMtODEzMC1mMmZkN2UxZjY0Y2UifQ.QeolPiKI1o5SxraQUhkHn-9QuMb-wvDCA28g78xAC97Pmev_1pHZISkUhgZ3vUdVa68OwkTIak9hiOFP5Fh7ZyyDWNvNcxXtnmGTHeNixyVv7Kt9s2vAbsbZo8RCmJ7zIcbzbXVo3mCTh3e2BiQrf_tKzsEydLLp8kuRE3cdbKjNxh6xxI-aHgrt61KRDFbrQ-DAqacoyiTayPlTD4uigCnFLJhOap0ghuyX8pmLdrZmH6vuJX_eJT8cRseMELPYyalxGaf73xzNevFZtg7YgPq94C1gSTRIXqbfh3uwI2r7pH1pgmwjdQXxS9g1r4PwVZWQUVIbO6WW6xsrtuuONaTw5Zx4IAcIZ1ilk33z7PXTDyVBKNVJ2iTn1iJ4gx_c8_OPKgzXBiVmgsYjdfPh0zKBF4eCcwOrTcIPdpIdpDE3e0OAP-ZiB_0lRHznrXw7Hq4l3VzQr3EcVPdn4JDuNN1N1D7fQSLcatK75D40jHoYiQVpb17EJUxtNp2nnV9A_AKFrD3XbniR8Ksv5H74xnecAp1v1JElE4GejT2o4RE9lwglVdspbKD0RvazWaAHd0qpXJ7RkGVjmGSRoOCk27WyQs9BJgXeNunmx4rZv53I-1Z8URp6_2feO57eNDJLpT_CMvXfT9PCEW1WxewjOmj9ADqROKzfN4_JZnEJULQ
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Send telegram dividend alerts:
+                value: ''
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
   /api/dividends/getHighestDividendYield:
     post:
       tags:
