@@ -1,5 +1,11 @@
 const View = require("../models/view.model");
 const Stock = require("../models/stock.model");
+const User = require("../models/user.model");
+const axios = require("axios");
+const config = require('../config');
+
+const telegramToken = config.telegramToken;
+const TELEGRAM_API_BASE = `https://api.telegram.org/bot${telegramToken}`;
 
 function getRandomInt(min, max) {
 	const minCeiled = Math.ceil(min);
@@ -109,4 +115,31 @@ exports.updateViewPerformance = async (req, res) => {
 	});
 
 	res.send({success:1,description:"Views updated successfully."});
+};
+
+exports.sendViewPerformanceTelegramAlerts = async (req, res) => {
+
+	let alertEnabledUsers = await User.find({"telegramChatId":{"$ne":""}});
+	if(alertEnabledUsers.length > 0){
+		alertEnabledUsers.forEach(async(user)=>{
+			const user_Id = user.userId;
+			const telegramChatId = user.telegramChatId;
+
+			const view_list = await View.find({owner_id:user_Id});
+			let telegramMessage = "View performance update\n";
+			if(view_list.length >0){
+				view_list.forEach(singleView=>{
+					telegramMessage+="\n";
+					telegramMessage+=`${singleView.view_name} \n`;
+					telegramMessage+=`${singleView.performance} \n`;
+				});
+				await axios.post(TELEGRAM_API_BASE+"/sendMessage",{
+					"chat_id":telegramChatId,
+					"text":telegramMessage
+				});
+			}
+			//console.log(response);
+		});
+	}
+	res.send({success:1,description:"Updates have been sent to users: "+alertEnabledUsers.length});
 };

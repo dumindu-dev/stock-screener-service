@@ -30,4 +30,8 @@ router.post('/updateViewPerformance', [
 	ViewController.updateViewPerformance
 ]);
 
+router.post('/sendViewPerformanceTelegramAlerts', [
+	ViewController.sendViewPerformanceTelegramAlerts
+]);
+
 module.exports = router
