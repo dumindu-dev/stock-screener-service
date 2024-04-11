@@ -26,4 +26,8 @@ router.post('/bestPerformingView', [
 	ViewController.bestPerformingView
 ]);
 
+router.post('/updateViewPerformance', [
+	ViewController.updateViewPerformance
+]);
+
 module.exports = router

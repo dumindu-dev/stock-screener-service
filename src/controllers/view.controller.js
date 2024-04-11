@@ -96,3 +96,17 @@ exports.bestPerformingView = async (req, res) => {
 		res.send([]);
 	}
 };
+
+exports.updateViewPerformance = async (req, res) => {
+
+	const viewList = await View.find({});
+
+	viewList.forEach(async(singleView) =>{
+		console.log("Updating view: "+singleView.view_id);
+		const viewResult = await calculateResults(singleView.stocks);
+		const viewPerformance = String(await calculatePerfomance(viewResult))+"%";
+		await View.updateOne({view_id:singleView.view_id},{"$set":{"result":viewResult,"performance":viewPerformance}});
+	});
+
+	res.send({success:1,description:"Views updated successfully."});
+};
