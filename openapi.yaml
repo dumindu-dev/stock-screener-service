@@ -77,6 +77,38 @@ paths:
       responses:
         '200':
           description: ''
+  /api/views/updateViewPerformance:
+    post:
+      tags:
+        - Views
+      summary: Update performance of views
+      description: Update performance of views
+      operationId: updatePerformanceOfViews
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Update performance of views:
+                value: ''
+      responses:
+        '200':
+          description: ''
+  /api/views/sendViewPerformanceTelegramAlerts:
+    post:
+      tags:
+        - Views
+      summary: Send performance telegram alerts
+      description: Send performance telegram alerts
+      operationId: sendPerformanceTelegramAlerts
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Send performance telegram alerts:
+                value: ''
+      responses:
+        '200':
+          description: ''
   /api/views/deleteView:
     post:
       tags:
