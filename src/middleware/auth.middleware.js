@@ -20,7 +20,7 @@ const tokenValidater = function (req, res, next) {
         req.auth = {};
         req.auth.userId = decoded.sub;
         req.auth.name = decoded.name;
-        req.auth.email = decoded.username;
+        req.auth.email = decoded.email;
         next();
     } catch (error) {
         res.status(401).json({ error: 'Invalid token' });
