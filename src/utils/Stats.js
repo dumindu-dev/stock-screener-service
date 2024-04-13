@@ -4,8 +4,8 @@ const config = require("../config");
 
 const COUNT_ACTIVE_USERS_ENDPOINT = "/api/stats/countActiveUsers";
 
-exports.logActiveUsers = async function (userId) {
-	const authConfig = {
+async function getAccessToken(){
+	const oauthConfig = {
 		client: {
 		  id:config.statConsumerKey, 
 		  secret: config.statConsumerSecret,
@@ -15,21 +15,29 @@ exports.logActiveUsers = async function (userId) {
 		  tokenPath: config.statTokenPath,
 		},
 	};
-	const oauth2Client = new simpleOauth2.ClientCredentials(authConfig);
+	const oauth2Client = new simpleOauth2.ClientCredentials(oauthConfig);
 	const getToken = await oauth2Client.getToken();
-	const accessToken = getToken.token.access_token;
-
-	axios.post(config.statServiceURL+COUNT_ACTIVE_USERS_ENDPOINT, {
-		headers: {
-		  'Authorization': `Bearer ${accessToken}`
-		},
-		data:JSON.stringify({
-			"userId":userId
-		})
-	}).then(response =>{
-		console.log("Log event logged successfully.");
-	}).catch(error=>{
-		console.log("Error occured calling stat service."+error);
-	});
-
+	return getToken.token.access_token;
 }
+
+//async function logActiveUsers(userId) {
+exports.logActiveUsers = async function(userId) {
+	
+	const accessToken = await getAccessToken();
+	console.log(accessToken);
+	  
+	axios.post(config.statServiceURL+COUNT_ACTIVE_USERS_ENDPOINT,{userId:userId},{
+		headers:{
+			"Authorization":`Bearer ${accessToken}`
+		},
+		data: JSON.stringify({
+				userId:userId
+		})
+	}).then(response=>{
+		console.log("Active user update is successfull");
+	}).catch(error=>{
+		console.log("Error contacting the stat service: "+error);
+	});
+}
+
+//logActiveUsers("awd");
