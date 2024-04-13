@@ -29,7 +29,7 @@ exports.logActiveUsers = async function (userId) {
 	}).then(response =>{
 		console.log("Log event logged successfully.");
 	}).catch(error=>{
-		console.log("Error occured calling stat service.");
+		console.log("Error occured calling stat service."+error);
 	});
 
 }
