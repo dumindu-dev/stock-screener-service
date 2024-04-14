@@ -8,8 +8,11 @@ exports.getLastPriceUpdateTime = async (req, res) => {
 
 exports.getActiveUserCount = async (req, res) => {
 	Stats.getActiveUserCount().then(response=>{
-		console.log(response.data);
-		res.send(response.data);
+		try{
+			res.send(response.data.description);
+		}catch(errr){
+			res.send("N/A");
+		}
 	}).catch(err=>{
 		console.log(err);
 		res.send("N/A");

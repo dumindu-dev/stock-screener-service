@@ -24,7 +24,7 @@ async function getAccessToken(){
 exports.logActiveUsers = async function(userId) {
 	
 	const accessToken = await getAccessToken();
-	console.log(accessToken);
+	//console.log(accessToken);
 	  
 	axios.post(config.statServiceURL+COUNT_ACTIVE_USERS_ENDPOINT,{userId:userId},{
 		headers:{
@@ -43,7 +43,7 @@ exports.logActiveUsers = async function(userId) {
 exports.getActiveUserCount = async function() {
 	
 	const accessToken = await getAccessToken();
-	console.log(accessToken);
+	//console.log(accessToken);
 	  
 	return axios.post(config.statServiceURL+GET_ACTIVE_USERS_ENDPOINT,{},{
 		headers:{
