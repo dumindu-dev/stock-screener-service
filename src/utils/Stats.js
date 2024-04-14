@@ -3,6 +3,7 @@ const simpleOauth2 = require('simple-oauth2');
 const config = require("../config");
 
 const COUNT_ACTIVE_USERS_ENDPOINT = "/api/stats/countActiveUsers";
+const GET_ACTIVE_USERS_ENDPOINT = "/api/stats/getActiveUserCount";
 
 async function getAccessToken(){
 	const oauthConfig = {
@@ -20,7 +21,6 @@ async function getAccessToken(){
 	return getToken.token.access_token;
 }
 
-//async function logActiveUsers(userId) {
 exports.logActiveUsers = async function(userId) {
 	
 	const accessToken = await getAccessToken();
@@ -40,4 +40,14 @@ exports.logActiveUsers = async function(userId) {
 	});
 }
 
-//logActiveUsers("awd");
+exports.getActiveUserCount = async function() {
+	
+	const accessToken = await getAccessToken();
+	console.log(accessToken);
+	  
+	return axios.post(config.statServiceURL+GET_ACTIVE_USERS_ENDPOINT,{},{
+		headers:{
+			"Authorization":`Bearer ${accessToken}`
+		}
+	});
+}

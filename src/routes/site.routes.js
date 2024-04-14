@@ -6,4 +6,8 @@ router.post('/getLastPriceUpdateTime', [
 	SiteController.getLastPriceUpdateTime
 ]);
 
+router.post('/getActiveUserCount', [
+	SiteController.getActiveUserCount
+]);
+
 module.exports = router

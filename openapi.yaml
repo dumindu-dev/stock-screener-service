@@ -381,6 +381,29 @@ paths:
       responses:
         '200':
           description: ''
+  /api/site/getActiveUserCount:
+    post:
+      tags:
+        - Portal information
+      summary: Ge active user count
+      description: Ge active user count
+      operationId: geActiveUserCount
+      parameters:
+        - name: api-key
+          in: header
+          schema:
+            type: string
+            example: >-
+              eyJraWQiOiJnYXRld2F5X2NlcnRpZmljYXRlX2FsaWFzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJkNDM0MmNlYi01ZjY4LTQ2OTItOGY1OS0wZThlNzkzY2M3MjRAY2FyYm9uLnN1cGVyIiwiYXVkIjoiY2hvcmVvOmRlcGxveW1lbnQ6c2FuZGJveCIsImlzcyI6Imh0dHBzOlwvXC9zdHMuY2hvcmVvLmRldjo0NDNcL2FwaVwvYW1cL3B1Ymxpc2hlclwvdjJcL2FwaXNcL2ludGVybmFsLWtleSIsImtleXR5cGUiOiJTQU5EQk9YIiwic3Vic2NyaWJlZEFQSXMiOlt7InN1YnNjcmliZXJUZW5hbnREb21haW4iOm51bGwsIm5hbWUiOiJNYXJrZXQgc2VudHJ5IGJhY2tlbmQgLSBNYXJrZXQgc2VudHJ5IEFQSSIsImNvbnRleHQiOiJcLzYzMDQ5MmI5LTc0MzEtNGUwNy05OWIwLTgwN2U0ZjZjZTBlOVwvdHNhclwvbWFya2V0LXNlbnRyeS1iYWNrZW5kXC9tYXJrZXQtc2VudHJ5LWFwaS0xOTdcL3YxLjAiLCJwdWJsaXNoZXIiOiJjaG9yZW9fcHJvZF9hcGltX2FkbWluIiwidmVyc2lvbiI6InYxLjAiLCJzdWJzY3JpcHRpb25UaWVyIjpudWxsfV0sImV4cCI6MTcxMjQ3MjkwOCwidG9rZW5fdHlwZSI6IkludGVybmFsS2V5IiwiaWF0IjoxNzEyNDcyMzA4LCJqdGkiOiI0Y2IxMjA0Yy1jM2RlLTRhMGMtODEzMC1mMmZkN2UxZjY0Y2UifQ.QeolPiKI1o5SxraQUhkHn-9QuMb-wvDCA28g78xAC97Pmev_1pHZISkUhgZ3vUdVa68OwkTIak9hiOFP5Fh7ZyyDWNvNcxXtnmGTHeNixyVv7Kt9s2vAbsbZo8RCmJ7zIcbzbXVo3mCTh3e2BiQrf_tKzsEydLLp8kuRE3cdbKjNxh6xxI-aHgrt61KRDFbrQ-DAqacoyiTayPlTD4uigCnFLJhOap0ghuyX8pmLdrZmH6vuJX_eJT8cRseMELPYyalxGaf73xzNevFZtg7YgPq94C1gSTRIXqbfh3uwI2r7pH1pgmwjdQXxS9g1r4PwVZWQUVIbO6WW6xsrtuuONaTw5Zx4IAcIZ1ilk33z7PXTDyVBKNVJ2iTn1iJ4gx_c8_OPKgzXBiVmgsYjdfPh0zKBF4eCcwOrTcIPdpIdpDE3e0OAP-ZiB_0lRHznrXw7Hq4l3VzQr3EcVPdn4JDuNN1N1D7fQSLcatK75D40jHoYiQVpb17EJUxtNp2nnV9A_AKFrD3XbniR8Ksv5H74xnecAp1v1JElE4GejT2o4RE9lwglVdspbKD0RvazWaAHd0qpXJ7RkGVjmGSRoOCk27WyQs9BJgXeNunmx4rZv53I-1Z8URp6_2feO57eNDJLpT_CMvXfT9PCEW1WxewjOmj9ADqROKzfN4_JZnEJULQ
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Ge active user count:
+                value: ''
+      responses:
+        '200':
+          description: ''
   /api/stock/searchByCompanyName:
     post:
       tags:
